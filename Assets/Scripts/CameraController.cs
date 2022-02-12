@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CameraController : MonoBehaviour
+{
+    GameObject player;
+
+    void Start()
+    {
+        this.player = GameObject.Find("cat");  
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Vector3 playerPos = this.player.transform.position;
+        //x,z²‚ÍƒJƒƒ‰‚Ì‰º‚ÌÀ•W‚ğ‚»‚Ì‚Ü‚Ü‘ã“ü
+        transform.position = new Vector3(transform.position.x, playerPos.y, transform.position.z);
+    }
+}

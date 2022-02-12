@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow)) key = 1;
         if (Input.GetKey(KeyCode.LeftArrow)) key = -1;
 
-        //プレイヤの速度
+        //プレイヤの速度を測定
         float speedx = Mathf.Abs(this.rigid2D.velocity.x);
 
         //スピード制限
