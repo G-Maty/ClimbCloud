@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //ジャンプする
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && this.rigid2D.velocity.y == 0)//y方向の速度が0の時だけジャンプすることで多段ジャンプ縛る
         {
             this.rigid2D.AddForce(transform.up * this.jumpforce);
         }
@@ -45,9 +45,17 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(key, 1, 1);
         }
 
+        //画面外に出た場合は最初から
+        if(transform.position.y < -10)
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+
         //プレイヤの速度に応じてアニメーション速度を変える
         this.animetor.speed = speedx / 2.0f;
     }
+
+
     //ゴールに到達
     void OnTriggerEnter2D(Collider2D other)
     {
